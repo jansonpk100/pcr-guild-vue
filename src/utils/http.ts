@@ -1,10 +1,16 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
-import { VueConstructor } from 'vue'
+import Vue, { VueConstructor } from 'vue'
+import VueCookies from 'vue-cookies'
 import { Message } from 'element-ui'
+
+axios.defaults.withCredentials = true
 
 axios.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     config.baseURL = 'api/'
+    if (Vue.$cookies.isKey('csrftoken')) {
+      config.headers['X-CSRFtoken'] = Vue.$cookies.get('csrftoken')
+    }
     return config
   }
 )

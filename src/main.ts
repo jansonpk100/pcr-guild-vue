@@ -5,6 +5,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueI18n from 'vue-i18n'
+import VueCookies from 'vue-cookies'
 
 import Http from '@/utils/http'
 
@@ -12,6 +13,7 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI)
 Vue.use(VueI18n)
+Vue.use(VueCookies)
 Vue.use(Http)
 
 const i18n = new VueI18n({

@@ -27,7 +27,11 @@
       <el-table-column v-if="user.superuser || user.staff" min-width="200px">
         <template slot-scope="scope">
           <span v-if="scope.row.username !== user.username">
-            <el-button type="danger" size="small" @click="remove(scope.row)">
+            <el-button
+              type="danger" size="small"
+              v-if="!scope.row.staff || (scope.row.staff && user.superuser) && !scope.row.superuser"
+              @click="remove(scope.row)"
+            >
               {{ $t('member.remove') }}
             </el-button>
             <el-button type="primary" size="small" v-if="user.superuser" @click="staff(scope.row)" >

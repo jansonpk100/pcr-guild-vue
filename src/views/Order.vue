@@ -165,7 +165,7 @@ export default class Order extends Vue {
   filterDialog = {
     method: 'and',
     characters: [],
-    invert: true
+    invert: false
   }
 
   created () {
