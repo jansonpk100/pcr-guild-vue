@@ -1,6 +1,5 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
 import Vue, { VueConstructor } from 'vue'
-import VueCookies from 'vue-cookies'
 import { Message } from 'element-ui'
 
 axios.defaults.withCredentials = true
@@ -15,11 +14,28 @@ axios.interceptors.request.use(
   }
 )
 
+const ERROR: {[key: string]: string} = {
+  'Incorrect username or password.': 'error.incorrectUsernamePassword',
+  'User already exists.': 'error.usernameExists',
+  'Unauthorized.': 'error.unauthorized',
+  'Incorrect password.': 'error.incorrectPassword',
+  'The limit of the length of a username is 4~16': 'error.usernameLimit',
+  'The limit of the length of a password is 4~24': 'error.passwordLimit',
+  'No permission.': 'error.noPermission',
+  'User does not exist.': 'error.userNotExist',
+  'Character already exists.': 'error.characterExist',
+  'Character does not exist.': 'error.characterNotExist'
+}
+
 axios.interceptors.response.use(
   (response: AxiosResponse<any>) => {
     return response
   },
   (error: any) => {
+    if (error.response.data) {
+      Message.error(window.i18n.t(ERROR[error.response.data]) || error.response.data)
+      return Promise.reject(error)
+    }
     switch (error.response.status) {
       case 400:
         Message.error(window.i18n.t('error.http400') as string)

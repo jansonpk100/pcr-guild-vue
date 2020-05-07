@@ -6,7 +6,7 @@
   custom-class="select"
   >
     <el-link type="primary" @click="selectall()" v-if="multiple" style="margin-right: 8px">
-      {{ selected.length !== characters.length? $t('selectall') : $t('unselectall')}}
+      {{ selected.length !== characters.length? $t('selectAll') : $t('unselectAll')}}
     </el-link>
     <el-link type="primary" @click="invert()" v-if="multiple">
       {{ $t('invert') }}

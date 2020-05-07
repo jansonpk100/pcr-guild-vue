@@ -38,11 +38,11 @@
       </el-table-column>
       <el-table-column width="100px">
         <template slot="header">
-          <el-button type="primary" @click="addFilterVisible = true">{{ $t('order.addfilter') }}</el-button>
+          <el-button type="primary" @click="addFilterVisible = true">{{ $t('order.addFilter') }}</el-button>
         </template>
         <template slot-scope="scope">
           <el-button type="danger" @click="filter.splice(scope.$index, 1)">
-            {{ $t('order.removefilter') }}
+            {{ $t('order.removeFilter') }}
           </el-button>
         </template>
       </el-table-column>
@@ -87,7 +87,7 @@
     />
     <!-- 过滤器添加 -->
     <el-dialog
-      :title="$t('order.addfilter')"
+      :title="$t('order.addFilter')"
       :visible.sync="addFilterVisible"
       width="70%"
       @closed="filterDialog = { method: 'and', characters: [], invert: false }"

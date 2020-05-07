@@ -35,7 +35,7 @@
               {{ $t('member.remove') }}
             </el-button>
             <el-button type="primary" size="small" v-if="user.superuser" @click="staff(scope.row)" >
-              {{ scope.row.staff? $t('member.removestaff'): $t('member.setstaff') }}
+              {{ scope.row.staff? $t('member.removeStaff'): $t('member.setStaff') }}
             </el-button>
           </span>
         </template>
@@ -95,7 +95,7 @@ export default class Member extends Vue {
 
   remove (user: User) {
     this.$confirm(
-      window.i18n.t('member.removeconfirm') as string + `: ${user.id}(${user.username})`,
+      window.i18n.t('member.removeConfirm') as string + `: ${user.id}(${user.username})`,
       window.i18n.t('member.remove') as string,
       {
         confirmButtonText: window.i18n.t('primary') as string,
